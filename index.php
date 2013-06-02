@@ -1,18 +1,47 @@
 <?php
-$password = "some_password";
-$kannel_status = file_get_contents("status.xml");
+$server = "http://192.168.144.47:15024";
+$admin_password = "admin";
+$status_password = "status";
+if($_GET){
+    $query_parameters = http_build_query(array(            
+            "smsc" => $_GET["smsc_id"],
+            "password" => $admin_password
+        ));
+         
+        // STEP 2
+        // build the url
+        $url = $server."/{$_GET["method"]}?{$query_parameters}";
+
+        // create a new cURL resource
+        $ch = curl_init();
+
+        // set URL and other appropriate options
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, TRUE);
+
+        // grab URL and pass it to the browser
+        $response = curl_exec($ch);        
+        curl_close($ch);
+}
+$kannel_status = file_get_contents("{$server}/status.xml?password={$status_password}");
 $status_xml = simplexml_load_string($kannel_status);
 ?>
 <link rel="stylesheet" href="kannel.css" type="text/css" media="screen" />
-<table>
-    <tr>
-        <td colspan="7" class="head">
-            Version
-        </td>
-    </tr>
+<html>
+<body>
+<?php if(isset($response)):?>
+    <div class="notification">
+        <?php echo $response;?>
+    </div>
+<?php endif;?>
+<table>    
     <tr>
         <td colspan="7">
+            <pre>
             <?php echo $status_xml->version; ?>
+        </pre>
         </td>
     </tr>
     <tr>
@@ -23,7 +52,7 @@ $status_xml = simplexml_load_string($kannel_status);
             <?php echo $status_xml->status; ?>
         </td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td rowspan="3" class="head">
             WDP
         </td>    
@@ -51,7 +80,7 @@ $status_xml = simplexml_load_string($kannel_status);
         <td>
             <?php echo "Queued: (" . $status_xml->wdp->sent->queued.")"; ?>
         </td>
-    </tr>
+    </tr> -->
     <tr>
         <td rowspan="3" class="head" >
             SMS
@@ -147,7 +176,7 @@ $status_xml = simplexml_load_string($kannel_status);
         </td>
     </tr>   
     <tr>
-        <td rowspan="3" class="head">
+        <td rowspan="<?php echo count($status_xml->boxes->box)+1;?>" class="head">
 
             Boxes
         </td>
@@ -199,8 +228,8 @@ $status_xml = simplexml_load_string($kannel_status);
     <?php foreach ($status_xml->smscs->smsc as $some_smsc): ?>        
         <tr>
             <td class="action" rowspan="2">
-                <a href="start-smsc?smsc={$some_smsc->id}&password={$password}" class="btn btn-start">START</a>
-                <a href="stop-smsc?smsc={$some_smsc->id}&password={$password}" class="btn btn-stop">STOP</a>
+                <a href="$server/index.php?method=start-smsc&smsc_id=$some_smsc->id" class="btn btn-start">START</a>
+                <a href="$server/index.php?method=stop-smsc&smsc_id=$some_smsc->id" class="btn btn-stop">STOP</a>
             </td>
             <td rowspan="2">
                 <?php echo $some_smsc->id; ?>
@@ -225,4 +254,5 @@ $status_xml = simplexml_load_string($kannel_status);
             <td><?php echo  "Sent: (" . $some_smsc->sent->dlr . ")"?></td>
         </tr>
     <?php endforeach; ?>
-    
+</body>
+</html>
