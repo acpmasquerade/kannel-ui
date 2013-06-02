@@ -10,15 +10,18 @@ table{
 
 table td{	
     padding: 5px;
-    background: #EEEEEE;
+    background: #f1f1f1;
 /*    border: 1px solid #ccc;*/
     border-radius: 3px;
 }
 
 table th{
     padding: 3px;
-    border-radius: 1px;
-    background: #cdcdcd;
+    font-weight: 600;
+    border-radius: 3px;
+    border-bottom: 1px solid #D0D3D4;
+    border-right: 1px solid #D0D3D4;
+    background: #EAEAEA;
 }
 
 table td.action{
@@ -31,7 +34,7 @@ table td.head{
     color: #770000;
     font-weight: 600;
     background: #FCFCFC;
-    border: 1px solid #cccccc;
+    /*border: 1px solid #cccccc;*/
     text-align: center;
     font-size: 24px;
 }
@@ -43,7 +46,7 @@ table td.head{
     text-shadow: 0 1px rgba(0,0,0,0.1);
     text-decoration: none;
     -webkit-border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 11px;
     font-weight: bold;
