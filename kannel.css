@@ -16,7 +16,8 @@ table td{
 }
 
 table th{
-    border-radius: 3px;
+    padding: 3px;
+    border-radius: 1px;
     background: #cdcdcd;
 }
 
