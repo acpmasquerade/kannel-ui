@@ -228,8 +228,10 @@ $status_xml = simplexml_load_string($kannel_status);
     <?php foreach ($status_xml->smscs->smsc as $some_smsc): ?>        
         <tr>
             <td class="action" rowspan="2">
-                <a href="$server/index.php?method=start-smsc&smsc_id=$some_smsc->id" class="btn btn-start">START</a>
-                <a href="$server/index.php?method=stop-smsc&smsc_id=$some_smsc->id" class="btn btn-stop">STOP</a>
+                <a href="index.php?method=start-smsc&smsc_id=<?php echo $some_smsc->id;?>" class="btn btn-start">START</a>
+                <?php if($some_smsc->status != "dead"):?>
+                <a href="index.php?method=stop-smsc&smsc_id=<?php echo $some_smsc->id;?>" class="btn btn-stop">STOP</a>
+                <?php endif;?>
             </td>
             <td rowspan="2">
                 <?php echo $some_smsc->id; ?>
