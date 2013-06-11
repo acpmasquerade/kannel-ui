@@ -1,18 +1,19 @@
 <?php
-$toggle_config = array(
-    "kannel_table" => "enabled",
-    "kannel_commands" => "enabled",
-    "version" => "enabled",
-    "status" => "enabled",
-    "wdp" => "disabled",
-    "sms" => "enabled",
-    "dlr" => "enabled",
-    "boxes" => "enabled",
-    "smsc_table" => "enabled"
-    );
+
+## ---------------- Configuration Parameters ----------------------------------
+
+error_reporting(0);
+
+# Kannel provided default administration interface endpoint
 $server = "http://192.168.144.47:15024";
+# Admin password to access the administration commands in Kannel
 $admin_password = "admin";
-$status_password = "status";
+# Kannel status URL / File
+$kannel_url = "status.xml";
+# $kannel_url = "{$server}/status?password=some-password";
+
+## ---------------- Configuration ends ----------------------------------------
+
 if($_GET){
     $query_parameters = http_build_query(array(            
             "smsc" => $_GET["smsc_id"],
@@ -36,13 +37,19 @@ if($_GET){
         $response = curl_exec($ch);        
         curl_close($ch);
 }
-$kannel_status = file_get_contents("status.xml");
-// $kannel_status = file_get_contents("{$server}/status.xml?password={$status_password}");
+
+// load the kannel status xml into string
+$kannel_status = file_get_contents($kannel_url);
+// parse the xml string using simplexml
 $status_xml = simplexml_load_string($kannel_status);
+
+// build the view
 ?>
-<link href="bootstrap-combined.min.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="kannel.css" type="text/css" media="screen" /> -->
 <html>
+<head>
+    <title>Kannel UI v0.1alpha by Sparrow SMS</title>
+    <link rel="stylesheet" href="./kannel.css" type="text/css" media="screen" />
+</head>
 <body>
     <div class="container">
     <?php if(isset($response)):?>
