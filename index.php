@@ -57,11 +57,7 @@ $status_xml = simplexml_load_string($kannel_status);
             <?php echo $response;?>
         </div>
     <?php endif;?>    
-  
-    <div class="container-fluid">
-      <div class="row-fluid">
-    <div id="content" class="span10">
-      <table class="table table-bordered table-striped table-striped" id="kannel">
+      <table class="table " id="kannel">
         <tr class="kannel-row" id="kannel-summary">
             <td colspan="7">
                 <pre><?php echo $status_xml->version; ?></pre>
@@ -234,12 +230,8 @@ $status_xml = simplexml_load_string($kannel_status);
                 </td>
             </tr>
         <?php endforeach; ?>
-    </table>
-    </div>
-    <a id="toggleSidebar" href="#" class="toggles"><i class="icon-chevron-right"></i></a>
-  </div>
-</div>
-    <table class="table table-bordered table-striped table-striped" id="smscs">
+    </table> 
+    <table class="table" id="smscs">
         <thead>
             <th colspan="7" >
                 SMSCS

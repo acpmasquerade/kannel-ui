@@ -8,11 +8,14 @@ table{
     border-radius: 5px;
     width: 90%;
     background: #FFFFFF;
+     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    margin: auto;
-    padding: 20px 20px 20px 20px;    
+    padding: 20px 20px 20px 20px;
+   
 }
 
 table td{	
