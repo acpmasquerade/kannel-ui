@@ -5,12 +5,12 @@
 error_reporting(0);
 
 # Kannel provided default administration interface endpoint
-$server = "http://192.168.144.47:15024";
+$server = "http://api.sparrowsms.com:13024";
 # Admin password to access the administration commands in Kannel
 $admin_password = "admin";
 # Kannel status URL / File
-$kannel_url = "status.xml";
-# $kannel_url = "{$server}/status?password=some-password";
+#$kannel_url = "status.xml";
+$kannel_url = "{$server}/status.xml?password=st@tus_@_";
 
 ## ---------------- Configuration ends ----------------------------------------
 
@@ -58,26 +58,13 @@ $status_xml = simplexml_load_string($kannel_status);
         </div>
     <?php endif;?>    
   
-    <?php if($toggle_config["kannel_table"] === "enabled"):?>
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar">
-            <ul class="nav nav-list">
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-            </ul>
-    </div>
-</div>
-    <div id="content" class="span9">
+    <div id="content" class="span10">
       <table class="table table-bordered table-striped table-striped" id="kannel">
         <tr class="kannel-row" id="kannel-summary">
             <td colspan="7">
-                <pre><?php echo trim($status_xml->version); ?></pre>
+                <pre><?php echo $status_xml->version; ?></pre>
             </td>
         </tr>
         <tr>
@@ -251,10 +238,8 @@ $status_xml = simplexml_load_string($kannel_status);
     </div>
     <a id="toggleSidebar" href="#" class="toggles"><i class="icon-chevron-right"></i></a>
   </div>
-</div>    
-<?php endif;?>
+</div>
     <table class="table table-bordered table-striped table-striped" id="smscs">
-
         <thead>
             <th colspan="7" class="head">
                 SMSCS
