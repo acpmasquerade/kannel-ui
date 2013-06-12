@@ -5,12 +5,12 @@
 error_reporting(0);
 
 # Kannel provided default administration interface endpoint
-$server = "http://api.sparrowsms.com:13024";
+$server = "some-server-url:port";
 # Admin password to access the administration commands in Kannel
 $admin_password = "admin";
 # Kannel status URL / File
 #$kannel_url = "status.xml";
-$kannel_url = "{$server}/status.xml?password=st@tus_@_";
+$kannel_url = "{$server}/status.xml?password=some-password";
 
 ## ---------------- Configuration ends ----------------------------------------
 
