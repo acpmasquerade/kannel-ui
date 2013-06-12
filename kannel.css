@@ -39,17 +39,6 @@ table td.action{
     vertical-align: middle;
 }
 
-table td.head{
-    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-    color: #770000;
-    font-weight: 600;
-    background: #FCFCFC;
-    border-bottom: 1px solid #D0D3D4;
-    border-right: 1px solid #D0D3D4;
-    text-align: center;
-    font-size: 18px;
-}
-
 .btn{
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
@@ -115,4 +104,29 @@ p{
 td pre{
     text-align: left;
     padding: 10px;
+}
+
+.smsc-status{
+    background: #E3E3E3;
+    font-weight: bold;
+}
+
+.smsc-status.dead{
+    background: #CC0000;
+    color: #FFFFFF;
+}
+
+.smsc-status.online{
+    background: #006600;
+    color: #FFFFFF;
+}
+
+.smsc-status.re-connecting{
+    background: #FFCC33;
+    color: #663366;
+}
+
+.smsc-status.connecting{
+    background: #669933;
+    color: #FFFFFF;
 }

@@ -5,7 +5,7 @@
 error_reporting(0);
 
 # Kannel provided default administration interface endpoint
-$server = "some-server-url:port";
+$server = "some-server-url:some-port";
 # Admin password to access the administration commands in Kannel
 $admin_password = "admin";
 # Kannel status URL / File
@@ -68,7 +68,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th class="head">
+            <th >
                 Status
             </th>
             <td colspan="6">
@@ -76,7 +76,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="3" class="head">
+            <th rowspan="3" >
                 WDP
             </th>    
             <th>
@@ -106,7 +106,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="3" class="head" >
+            <th rowspan="3"  >
                 SMS
             </th>   
             <th>
@@ -155,7 +155,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="2" class="head">
+            <th rowspan="2" >
                 DLR
             </th>   
             <th>
@@ -201,7 +201,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>   
         <tr>
-            <th rowspan="<?php echo count($status_xml->boxes->box)+1;?>" class="head">
+            <th rowspan="<?php echo count($status_xml->boxes->box)+1;?>" >
 
                 Boxes
             </th>
@@ -241,7 +241,7 @@ $status_xml = simplexml_load_string($kannel_status);
 </div>
     <table class="table table-bordered table-striped table-striped" id="smscs">
         <thead>
-            <th colspan="7" class="head">
+            <th colspan="7" >
                 SMSCS
             </th>
         </thead>
@@ -266,7 +266,7 @@ $status_xml = simplexml_load_string($kannel_status);
                 <td rowspan="2">
                     <?php echo $some_smsc->id; ?>
                 </td>
-                <td rowspan="2">
+                <td rowspan="2" class="smsc-status <?php echo array_shift(explode(" ", $some_smsc->status));?>">
                     <?php echo $some_smsc->status; ?>
                 </td>
                 <td>
