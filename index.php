@@ -1,19 +1,5 @@
 <?php
-
-## ---------------- Configuration Parameters ----------------------------------
-
-error_reporting(0);
-
-# Kannel provided default administration interface endpoint
-$server = "some-server-url:some-port";
-# Admin password to access the administration commands in Kannel
-$admin_password = "admin";
-# Kannel status URL / File
-#$kannel_url = "status.xml";
-$kannel_url = "{$server}/status.xml?password=some-password";
-
-## ---------------- Configuration ends ----------------------------------------
-
+include("config.php");
 if($_GET){
     $query_parameters = http_build_query(array(            
             "smsc" => $_GET["smsc_id"],
