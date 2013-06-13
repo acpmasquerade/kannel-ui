@@ -65,35 +65,5 @@ Using native malloc.
 		<failed>0</failed>
 		<queued>0</queued>
 	</smsc>
-	<smsc>
-		<name>5001:20000</name>
-		<admin-id>5001</admin-id>
-		<id>5001</id>
-		<status>online</status>
-		<received><sms>27950</sms><dlr>0</dlr></received>
-		<sent><sms>0</sms><dlr>0</dlr></sent>
-		<failed>0</failed>
-		<queued>0</queued>
-	</smsc>
-	<smsc>
-		<name>5001:20000</name>
-		<admin-id>5001</admin-id>
-		<id>5001</id>
-		<status>connecting</status>
-		<received><sms>27950</sms><dlr>0</dlr></received>
-		<sent><sms>0</sms><dlr>0</dlr></sent>
-		<failed>0</failed>
-		<queued>0</queued>
-	</smsc>
-	<smsc>
-		<name>5001:20000</name>
-		<admin-id>5001</admin-id>
-		<id>5001</id>
-		<status>some-other-stat</status>
-		<received><sms>27950</sms><dlr>0</dlr></received>
-		<sent><sms>0</sms><dlr>0</dlr></sent>
-		<failed>0</failed>
-		<queued>0</queued>
-	</smsc>
 </smscs>
 </gateway>

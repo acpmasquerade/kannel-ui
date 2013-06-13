@@ -1,0 +1,47 @@
+.navbar-fixed-top{
+	position: fixed;
+}
+
+.navbar-custom{	
+	margin-left: 240px;
+}
+
+.content-custom{
+	margin-top: 40px;
+}
+
+.dialog-head{
+  color: #808080;
+  display: block;
+  padding-left: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.bootbox-dialog ul{
+  list-style-type: none;
+}
+
+.bootbox-dialog a{
+  background: #efeff0;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #efeff0), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #efeff0, #ffffff);
+  background: -moz-linear-gradient(center bottom, #efeff0 0%, #ffffff 100%);
+  background: -o-linear-gradient(bottom, #efeff0, #ffffff);
+  filter: progid:dximagetransform.microsoft.gradient(startColorStr='#4d5b76', EndColorStr='#6c7a95');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff',EndColorStr='#efeff0')";
+  border-bottom: 1px solid #C8C8CB;
+  border-right: 1px solid #C8C8CB;
+  color: #333333;
+  display: block;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 2.5em;
+  margin: 5px;
+  padding: 0 0.25em;
+}
+
+.bootbox-dialog a:hover{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
