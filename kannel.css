@@ -2,6 +2,7 @@ body{
     font-family: 'Lato',sans-serif;
     font-size: 14px;
     line-height: 20px;
+    width: 100%;
 }
 
 table{
@@ -72,6 +73,8 @@ table td.action{
     background-image: -webkit-linear-gradient(top,#dd4b39,#c53727);
     background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
     background-image: linear-gradient(top,#dd4b39,#c53727);
+    filter: progid:dximagetransform.microsoft.gradient(startColorStr='#dd4b39', EndColorStr='#c53727');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#dd4b39',EndColorStr='#c53727')";
 }
 
 .btn-start{
@@ -81,6 +84,8 @@ table td.action{
     background-image: -webkit-linear-gradient(top,#009900,#005500);
     background-image: -moz-linear-gradient(center top , #009900, #005500);
     background-image: linear-gradient(top,#009900,#005500);
+    filter: progid:dximagetransform.microsoft.gradient(startColorStr='#009900', EndColorStr='#005500');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#009900',EndColorStr='#005500')";
 }
 
 .btn:hover{
