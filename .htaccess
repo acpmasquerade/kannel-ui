@@ -1,0 +1,3 @@
+<FilesMatch "users\.ini">
+	deny from all
+</FilesMatch>
