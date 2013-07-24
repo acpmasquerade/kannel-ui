@@ -1,18 +1,22 @@
-/*body{
+body{
     font-family: 'Lato',sans-serif;
     font-size: 14px;
     line-height: 20px;
+    width: 100%;
 }
 
 table{
     border-radius: 5px;
     width: 90%;
     background: #FFFFFF;
+     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    margin: auto;
-    padding: 20px 20px 20px 20px;    
+    padding: 20px 20px 20px 20px;
+   
 }
 
 table td{	
@@ -37,17 +41,6 @@ table th{
 table td.action{
     text-align: center;
     vertical-align: middle;
-}
-
-table td.head{
-    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-    color: #770000;
-    font-weight: 600;
-    background: #FCFCFC;
-    border-bottom: 1px solid #D0D3D4;
-    border-right: 1px solid #D0D3D4;
-    text-align: center;
-    font-size: 18px;
 }
 
 .btn{
@@ -80,6 +73,8 @@ table td.head{
     background-image: -webkit-linear-gradient(top,#dd4b39,#c53727);
     background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
     background-image: linear-gradient(top,#dd4b39,#c53727);
+    filter: progid:dximagetransform.microsoft.gradient(startColorStr='#dd4b39', EndColorStr='#c53727');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#dd4b39',EndColorStr='#c53727')";
 }
 
 .btn-start{
@@ -89,6 +84,8 @@ table td.head{
     background-image: -webkit-linear-gradient(top,#009900,#005500);
     background-image: -moz-linear-gradient(center top , #009900, #005500);
     background-image: linear-gradient(top,#009900,#005500);
+    filter: progid:dximagetransform.microsoft.gradient(startColorStr='#009900', EndColorStr='#005500');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#009900',EndColorStr='#005500')";
 }
 
 .btn:hover{
@@ -115,6 +112,29 @@ p{
 td pre{
     text-align: left;
     padding: 10px;
-}*/
+}
 
+.smsc-status{
+    background: #E3E3E3;
+    font-weight: bold;
+}
 
+.smsc-status.dead{
+    background: #CC0000;
+    color: #FFFFFF;
+}
+
+.smsc-status.online{
+    background: #006600;
+    color: #FFFFFF;
+}
+
+.smsc-status.re-connecting{
+    background: #FFCC33;
+    color: #663366;
+}
+
+.smsc-status.connecting{
+    background: #669933;
+    color: #FFFFFF;
+}

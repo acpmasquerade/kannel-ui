@@ -1,18 +1,5 @@
 <?php
-$toggle_config = array(
-    "kannel_table" => "enabled",
-    "kannel_commands" => "enabled",
-    "version" => "enabled",
-    "status" => "enabled",
-    "wdp" => "disabled",
-    "sms" => "enabled",
-    "dlr" => "enabled",
-    "boxes" => "enabled",
-    "smsc_table" => "enabled"
-    );
-$server = "http://192.168.144.47:15024";
-$admin_password = "admin";
-$status_password = "status";
+include("config.php");
 if($_GET){
     $query_parameters = http_build_query(array(            
             "smsc" => $_GET["smsc_id"],
@@ -36,13 +23,19 @@ if($_GET){
         $response = curl_exec($ch);        
         curl_close($ch);
 }
-$kannel_status = file_get_contents("status.xml");
-// $kannel_status = file_get_contents("{$server}/status.xml?password={$status_password}");
+
+// load the kannel status xml into string
+$kannel_status = file_get_contents($kannel_url);
+// parse the xml string using simplexml
 $status_xml = simplexml_load_string($kannel_status);
+
+// build the view
 ?>
-<link href="bootstrap-combined.min.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="kannel.css" type="text/css" media="screen" /> -->
 <html>
+<head>
+    <title>Kannel UI v0.1alpha by Sparrow SMS</title>
+    <link rel="stylesheet" href="./kannel.css" type="text/css" media="screen" />
+</head>
 <body>
     <div class="container">
     <?php if(isset($response)):?>
@@ -50,31 +43,14 @@ $status_xml = simplexml_load_string($kannel_status);
             <?php echo $response;?>
         </div>
     <?php endif;?>    
-  
-    <?php if($toggle_config["kannel_table"] === "enabled"):?>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar">
-            <ul class="nav nav-list">
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-              <li><a href="#">Suspend</a></li>
-            </ul>
-    </div>
-</div>
-    <div id="content" class="span9">
-      <table class="table table-bordered table-striped table-striped" id="kannel">
+      <table class="table " id="kannel">
         <tr class="kannel-row" id="kannel-summary">
             <td colspan="7">
-                <pre><?php echo trim($status_xml->version); ?></pre>
+                <pre><?php echo $status_xml->version; ?></pre>
             </td>
         </tr>
         <tr>
-            <th class="head">
+            <th >
                 Status
             </th>
             <td colspan="6">
@@ -82,7 +58,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="3" class="head">
+            <th rowspan="3" >
                 WDP
             </th>    
             <th>
@@ -112,7 +88,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="3" class="head" >
+            <th rowspan="3"  >
                 SMS
             </th>   
             <th>
@@ -161,7 +137,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>
         <tr>
-            <th rowspan="2" class="head">
+            <th rowspan="2" >
                 DLR
             </th>   
             <th>
@@ -207,7 +183,7 @@ $status_xml = simplexml_load_string($kannel_status);
             </td>
         </tr>   
         <tr>
-            <th rowspan="<?php echo count($status_xml->boxes->box)+1;?>" class="head">
+            <th rowspan="<?php echo count($status_xml->boxes->box)+1;?>" >
 
                 Boxes
             </th>
@@ -240,16 +216,10 @@ $status_xml = simplexml_load_string($kannel_status);
                 </td>
             </tr>
         <?php endforeach; ?>
-    </table>
-    </div>
-    <a id="toggleSidebar" href="#" class="toggles"><i class="icon-chevron-right"></i></a>
-  </div>
-</div>    
-<?php endif;?>
-    <table class="table table-bordered table-striped table-striped" id="smscs">
-
+    </table> 
+    <table class="table" id="smscs">
         <thead>
-            <th colspan="7" class="head">
+            <th colspan="7" >
                 SMSCS
             </th>
         </thead>
@@ -274,7 +244,7 @@ $status_xml = simplexml_load_string($kannel_status);
                 <td rowspan="2">
                     <?php echo $some_smsc->id; ?>
                 </td>
-                <td rowspan="2">
+                <td rowspan="2" class="smsc-status <?php echo array_shift(explode(" ", $some_smsc->status));?>">
                     <?php echo $some_smsc->status; ?>
                 </td>
                 <td>
