@@ -290,9 +290,9 @@ $status_xml = simplexml_load_string($kannel_status);
                                     <?php //if($some_smsc->id == "5001" || $some_smsc->id == "ncell" || $some_smsc->id == "5001v"):?>
                                         <tr>
                                             <td rowspan="2">
-                                                <a href="index.php?method=start-smsc&smsc_id=<?php echo $some_smsc->id; ?>" class="btn btn-start btn-primary">START</a>
+                                                <a href="index.php?command=smsc&method=start-smsc&smsc_id=<?php echo $some_smsc->id; ?>" class="btn btn-start btn-primary">START</a>
                                                 <?php if ($some_smsc->status != "dead"): ?>
-                                                    <a href="index.php?method=stop-smsc&smsc_id=<?php echo $some_smsc->id; ?>" class="btn btn-stop btn-danger">STOP</a>
+                                                    <a href="index.php?command=smsc&method=stop-smsc&smsc_id=<?php echo $some_smsc->id; ?>" class="btn btn-stop btn-danger">STOP</a>
                                                 <?php endif; ?>
                                             </td>
                                             <td rowspan="2"><?php echo $some_smsc->id; ?></td>
@@ -300,13 +300,13 @@ $status_xml = simplexml_load_string($kannel_status);
                                             <td rowspan="2"><?php echo $some_smsc->failed; ?></td>
                                             <td rowspan="2"><?php echo $some_smsc->queued; ?></td>
                                             <th>Received</th>
-                                            <td><?php echo $some_smsc->received->sms; ?></td>
-                                            <td><?php echo $some_smsc->received->dlr; ?></td>
+                                            <td><?php echo $some_smsc->sms->received; ?></td>
+                                            <td><?php echo $some_smsc->dlr->received; ?></td>
                                         </tr>
                                         <tr>
                                             <th>Sent</th>
-                                            <td><?php echo $some_smsc->sent->sms ?></td>
-                                            <td><?php echo $some_smsc->sent->dlr ?></td>
+                                            <td><?php echo $some_smsc->sms->sent; ?></td>
+                                            <td><?php echo $some_smsc->dlr->sent; ?></td>
                                         </tr>
                                     <?php //endif;?>
                                     <?php endforeach; ?>
